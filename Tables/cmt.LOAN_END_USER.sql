@@ -1,0 +1,23 @@
+CREATE TABLE [cmt].[LOAN_END_USER]
+(
+[LOAN_END_USER_KEY] [numeric] (19, 0) NOT NULL IDENTITY(1, 1),
+[LOAN_END_USER_ID] [numeric] (19, 0) NOT NULL,
+[BATCH_ID] [bigint] NOT NULL,
+[LAST_MODIFIED_ON] [datetime] NOT NULL,
+[LAST_MODIFIED_BY] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[IS_CURRENT] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[IS_DELETED] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[LOAN_ID] [numeric] (19, 0) NULL,
+[CONTACT_ID] [numeric] (19, 0) NULL,
+[END_USER_CONTACT_ID] [numeric] (19, 0) NULL,
+[JOB_ROLE_ID] [numeric] (19, 0) NULL,
+[LOAN_END_USER_UUID] [varchar] (64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LOAN_KEY] [numeric] (19, 0) NULL,
+[CONTACT_KEY] [numeric] (19, 0) NULL,
+[END_USER_CONTACT_KEY] [numeric] (19, 0) NULL,
+[JOB_ROLE_KEY] [numeric] (19, 0) NULL,
+[NAMESPACE] [varchar] (128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [cmt].[LOAN_END_USER] ADD CONSTRAINT [pk__loan_end_user] PRIMARY KEY CLUSTERED  ([LOAN_END_USER_KEY]) ON [PRIMARY]
+GO

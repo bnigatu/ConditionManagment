@@ -1,0 +1,77 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+CREATE VIEW [dbo].[LOAN_V]
+ 
+ AS
+ SELECT LOAN_KEY
+      ,LOAN_ID
+      ,IS_CURRENT
+      ,IS_DELETED
+      ,IS_CURRENT_DAY
+      ,VALID_FROM
+      ,VALID_TILL
+      ,LAST_MODIFIED_BY
+      ,LAST_MODIFIED_ON
+      ,BATCH_ID
+      ,VERSION_NUMBER
+      ,PROPERTY_ID
+      ,LOAN_ORIGINATOR_ID
+      ,ORIGINATING_PARTNER_ID
+      ,DOCUMENTATION_TYPE_ID
+      ,STATUS_ID
+      ,TITLE_ORDER_DETAILS_ID
+      ,POLICY_ID
+      ,COMPANY_ID
+      ,CREATED_BY_ID
+      ,SELLING_COMPANY_ID
+      ,LOAN_PURPOSE_ID
+      ,ESCROW_TYPE_ID
+      ,APPLICATION_DATE
+      ,SIGNING_DATE
+      ,FUNDING_DATE
+      ,LOAN_NUMBER
+      ,TOTAL_LOAN_AMOUNT
+      ,LOAN_UUID
+      ,ARMS_LENGTH_FLAG
+      ,NEEDS_POLICY_VERIF_FLAG
+      ,CREATED_DATE
+      ,UPDATED_DATE
+      ,CREATED_DATE_AS_LONG
+      ,UPDATED_DATE_AS_LONG
+      ,INVALID_FLAG
+      ,CLEARED_BY_CSTD_FLAG
+      ,CMT_VISIBLE_FLAG
+      ,PROPERTY_KEY
+      ,LOAN_ORIGINATOR_KEY
+      ,ORIGINATING_PARTNER_KEY
+      ,DOCUMENTATION_TYPE_KEY
+      ,STATUS_KEY
+      ,TITLE_ORDER_DETAILS_KEY
+      ,POLICY_KEY
+      ,COMPANY_KEY
+      ,CREATED_BY_KEY
+      ,SELLING_COMPANY_KEY
+      ,LOAN_PURPOSE_KEY
+      ,ESCROW_TYPE_KEY
+      ,[NAMESPACE]
+  FROM [dbo].[LOAN]
+
+  
+ WHERE IS_CURRENT = 'Y' AND IS_DELETED = 'N'
+ 
+
+
+
+
+
+GO

@@ -1,0 +1,41 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+CREATE VIEW [RWT].[V_LOANS_CM] ([RWT_LOAN_NUMBER], [SELLER_LOAN_NUMBER], [SELLER_ID], 
+							[SELLER_NAME], [BORROWER_NAME], [RWT_LOAN_STATUS], [COMMITMENT_ID], 
+						    [APPRAISAL_REVIEW_REQUEST_DATE], [PURCHASE_REVIEW_REQUEST_DATE]) 
+AS 
+  SELECT [RWT_LOAN_NUMBER] = CONVERT(VARCHAR(20), [RWT_LOAN_NUM]), 
+         [SELLER_LOAN_NUMBER] = NULLIF(Isnull(CONVERT(VARCHAR(20), 
+                                              [SELLER_LOAN_NUM]), ''), ''), 
+         [SELLER_ID] = NULLIF(Isnull(CONVERT(VARCHAR(20), [SELLER_ID]), ''), '') 
+         , 
+         [SELLER_NAME] = NULLIF(Isnull(CONVERT(VARCHAR(40), [SELLER]),''), ''), 
+         [BORROWER_NAME] = NULLIF(Isnull(CONVERT(VARCHAR(80), [BORROWER_NAME]), ''), ''), 
+         [RWT_LOAN_STATUS] = NULLIF(Isnull(CONVERT(VARCHAR(40), [LOAN_STATUS]), ''), ''), 
+         [COMMITMENT_ID] = NULLIF(Isnull(CONVERT(VARCHAR(20), [COMMITMENT_ID]),''), ''), 
+         [APPRAISAL_REVIEW_REQUEST_DATE] = 
+         CASE 
+           WHEN [APR_DATE] >= '09/11/13' 
+                AND [APPRAISAL_REVIEW_REQUEST_DATE] IS 
+                    NOT NULL THEN 
+         CONVERT(VARCHAR(15), [APPRAISAL_REVIEW_REQUEST_DATE], 101) 
+         WHEN [APR_DATE] < '09/11/13' 
+              AND [APPRAISAL_REVIEW_REQUEST_DATE] IS NOT NULL THEN 
+         CONVERT(VARCHAR(15), [APR_DATE], 101) 
+                                           END, 
+         [PURCHASE_REVIEW_REQUEST_DATE] = 
+         CASE 
+           WHEN [PRC_DATE] >= '09/11/13' 
+                AND [PURCHASE_REVIEW_REQUEST_DATE] IS 
+                    NOT NULL THEN 
+         CONVERT(VARCHAR(15), [PURCHASE_REVIEW_REQUEST_DATE], 101) 
+         WHEN [PRC_DATE] < '09/11/13' 
+              AND [PURCHASE_REVIEW_REQUEST_DATE] IS NOT NULL THEN 
+         CONVERT(VARCHAR(15), [PRC_DATE], 101) 
+                                          END 
+  FROM   RWTLOANPROD.LOANDATA.cache.los_to_cmt WITH(NOLOCK)
+
+GO

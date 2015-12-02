@@ -1,0 +1,55 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE VIEW [dbo].[ACTIVITY_V]
+ AS
+SELECT ACTIVITY_KEY
+      ,ACTIVITY_ID
+      ,IS_CURRENT
+      ,IS_DELETED
+      ,IS_CURRENT_DAY
+      ,VALID_FROM
+      ,VALID_TILL
+      ,LAST_MODIFIED_BY
+      ,LAST_MODIFIED_ON
+      ,BATCH_ID
+      ,ACTIVITY_CLASS
+      ,VERSION_NUMBER
+      ,ACTIVITY_TYPE_ID
+      ,LOAN_ID
+      ,CONTACT_ID
+      ,ACTIVITY_STATUS_ID
+      ,ACTIVITY_SOURCE_ID
+      ,SOURCE_ACTIVITY_STATUS_ID
+      ,SOURCE_ACTIVITY_TYPE_ID
+      ,CREATED_DATE
+      ,UPDATED_DATE
+      ,CREATED_DATE_AS_LONG
+      ,UPDATED_DATE_AS_LONG
+      ,[DESCRIPTION]
+      ,SOURCE_ACTIVITY_IDENTIFIER
+      ,SOURCE_DESCRIPTION
+      ,SELLER_VIEWABLE_FLAG
+      ,ACTIVITY_UUID
+      ,ACTIVITY_BI_UUID
+      ,ACTIVITY_CLOSED_DATE
+      ,ACTIVITY_TYPE_KEY
+      ,LOAN_KEY
+      ,CONTACT_KEY
+      ,ACTIVITY_STATUS_KEY
+      ,ACTIVITY_SOURCE_KEY
+      ,SOURCE_ACTIVITY_STATUS_KEY
+      ,SOURCE_ACTIVITY_TYPE_KEY
+      ,SOURCE_ACKNOWLEDGED_FLAG
+	  ,EXCLUDED_FLAG
+      ,[NAMESPACE]
+  FROM [dbo].[ACTIVITY]
+  WHERE IS_CURRENT = 'Y' AND IS_DELETED = 'N'
+
+
+GO

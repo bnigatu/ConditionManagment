@@ -1,0 +1,38 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+CREATE VIEW [dbo].[CONDITION_v]
+ AS
+
+SELECT ACTIVITY_KEY
+      ,ACTIVITY_ID
+      ,IS_CURRENT
+      ,IS_DELETED
+      ,IS_CURRENT_DAY
+      ,VALID_FROM
+      ,VALID_TILL
+      ,LAST_MODIFIED_BY
+      ,LAST_MODIFIED_ON
+      ,BATCH_ID
+      ,CONDITION_TYPE_ID
+      ,INVESTOR_CONDITION_STATUS_ID
+      ,DUE_DILG_VEND_COND_STATUS_ID
+      ,CONDITION_STATUS_ID
+      ,CONDITION_TIMING_TYPE_ID
+      ,SOURCE_GRADE
+      ,SOURCE_COMMENTS
+      ,INVESTOR_CONDITION_STATUS_KEY
+      ,DUE_DILG_VEND_COND_STATUS_KEY
+      ,CONDITION_STATUS_KEY
+      ,CONDITION_TIMING_TYPE_KEY
+      ,[NAMESPACE]
+  FROM [dbo].[CONDITION]
+  
+  WHERE IS_CURRENT = 'Y' AND IS_DELETED = 'N'
+ 
+
+GO

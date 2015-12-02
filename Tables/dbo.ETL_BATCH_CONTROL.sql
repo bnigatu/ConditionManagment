@@ -1,0 +1,8 @@
+CREATE TABLE [dbo].[ETL_BATCH_CONTROL]
+(
+[BATCH_ID] [bigint] NOT NULL IDENTITY(1, 1),
+[JOB_NAME] [varchar] (100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[START_TIME] [datetime] NULL,
+[END_TIME] [datetime] NULL
+) ON [PRIMARY]
+GO

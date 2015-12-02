@@ -1,0 +1,3 @@
+CREATE SCHEMA [cmt]
+AUTHORIZATION [dbo]
+GO
